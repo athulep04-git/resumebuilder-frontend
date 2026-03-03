@@ -68,9 +68,9 @@ console.log(InputSkill);
 
 
   //get a resume details by id and set those details in the form field for editing
-const getResumeDetailsById=async(resumeId)=>{
-  console.log("in edit "+resumeId);
-  const response=await getAResumeAPI(resumeId);
+const getResumeDetailsById=async(id)=>{
+  console.log("in edit "+id);
+  const response=await getAResumeAPI(id);
   console.log(response);
   setresumedata(response.data)
   
@@ -102,7 +102,7 @@ useEffect(() => {
   const addskill = (skill) => {
   if (!skill.trim()) return;
 
-  if (resumedata.skills.includes(skill)) {
+  if (resumedata?.skills?.includes(skill)) {
     alert("skill already existing");
   } else {
     setresumedata({

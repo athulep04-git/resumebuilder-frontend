@@ -18,7 +18,7 @@ const steps = [
   "Skills",
   "Review",
 ];
-function FormSteps({formData,setFormData,setStateData}) {
+function FormSteps({formData,setFormData,StateData,setStateData}) {
 
   const { personalDetails, contactDetails, education, professionalDetails, skills, Summary } = formData
 
@@ -296,13 +296,26 @@ const handleAddResume=async()=>{
   try{
 const response=await addResumeAPI(formData)
   console.log(response);
-  setStateData(true)
+  if(response.status==201){
+    
   Swal.fire({
   title: 'Success!',
   text: 'Resume submitted',
   icon: 'success',
   confirmButtonText: 'OK'
 })
+setStateData(true)
+  }
+  else{
+    console.log("error"+err);
+    Swal.fire({
+  title: 'Error!',
+  text: 'Do you want to continue',
+  icon: 'error',
+  confirmButtonText: 'OK'
+})
+  }
+  
   }catch(err){
     Swal.fire({
   title: 'Error!',
@@ -379,7 +392,7 @@ const response=await addResumeAPI(formData)
         </React.Fragment>
       )}
     </Box>
-  );
+  )
 }
 
 export default FormSteps;

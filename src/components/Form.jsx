@@ -34,9 +34,7 @@ function Form() {
     summary:''
   })
 
-   const handleDownloadComplete = () => {
-    setStateData(true);
-  };
+   
 
   return (
     <div>
@@ -65,10 +63,10 @@ function Form() {
         }}
       >
         <div>
-          <FormSteps formData={formData} setFormData={setFormData} setStateData={setStateData}/>
+          <FormSteps formData={formData} setFormData={setFormData} StateData={StateData} setStateData={setStateData}/>
         </div>
         <div>
-          <Preview formData={formData} />
+          <Preview formData={formData} StateData={StateData} />
         </div>
       </Stack>
 }
